@@ -5,7 +5,16 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "commit": "git cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "git-cz"
+    },
+    "ghooks": {
+      "commit-msg": "validate-commit-msg"
+    }
   },
   "dependencies": {
     "core-js": "^3.3.2",
@@ -20,9 +29,12 @@
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^5.0.0",
+    "ghooks": "^2.0.4",
+    "git-cz": "^3.3.0",
     "prettier": "^1.18.2",
     "sass": "^1.19.0",
     "sass-loader": "^8.0.0",
+    "validate-commit-msg": "^2.14.0",
     "vue-template-compiler": "^2.6.10"
   }
 }
