@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  name: "Title"
+  name: 'Title',
 };
 </script>
 
@@ -14,7 +14,7 @@ export default {
   height: 40px;
   line-height: 40px;
   padding: 0 20px;
-  font-size: 16px;
   color: $theme;
+  font-size: 30px;
 }
 </style>

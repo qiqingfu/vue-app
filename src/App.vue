@@ -5,14 +5,19 @@
 </template>
 
 <script>
-import Title from "./components/Title";
+import Title from './components/Title.vue';
 
 export default {
-  name: "app",
+  name: 'app',
   components: {
-    Title
-  }
+    Title,
+  },
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+#abc {
+  color: red;
+  font-size: 20px;
+}
+</style>

@@ -1,5 +1,39 @@
 @charset "UTF-8";
-
+@import "variables";
 /* css reset
 ------------------------- */
+
+/**
+ * 1. Change the default font family in all browsers (opinionated).
+ * 2. Correct the line height in all browsers.
+ * 3. Prevent adjustments of font size after orientation changes in IE and iOS.
+ */
+
+html {
+	font-family: $--font;
+	-ms-text-size-adjust: 100%; /* 3 */
+	-webkit-text-size-adjust: 100%; /* 3 */
+}
+
+/* 删除所有浏览器的页边距
+------------------------- */
+body {
+	margin: 0;
+	font-size: $--font-size;
+	color: $content-color;
+	overflow: hidden;
+	word-break: break-all;
+	background-color: $content-background-color;
+}
+
+/* HTML5 显示字段
+------------------------- */
+
+/**
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in Edge, IE, and Firefox.
+ * 2. Add the correct display in IE.
+ */
+
+
 
