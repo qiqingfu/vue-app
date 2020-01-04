@@ -1,0 +1,55 @@
+/**
+* @author qiqingfu
+* @date 2020-01-05 02:17
+*/
+
+.table {
+	width: 100%;
+	padding: 10px;
+	background-color: #fefbfe;
+	min-width: 60%;
+	max-width: 100%;
+	overflow: auto;
+	font-size: 12px;
+	border-collapse: collapse;
+
+	&.left {
+		thead,tbody {
+			text-align: left;
+			td, th {
+				padding-left: 20px;
+			}
+		};
+	}
+	&.center {
+		thead,tbody {
+			text-align: center;
+		};
+	}
+
+	thead {
+		line-height: 40px;
+		overflow: hidden;
+	}
+
+	tbody {
+		color: #626062;
+		font-weight: 500;
+		tr {
+			border-top: solid 2px #e5e3e6;
+			&:hover {
+				background-color: #f2f0f2;
+			}
+			td {
+				border: none;
+				padding: 20px 0;
+				&.through {
+					text-decoration: line-through;
+				};
+				&.underline {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+}

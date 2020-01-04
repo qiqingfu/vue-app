@@ -13,8 +13,4 @@ export default {
 </script>
 
 <style lang="scss">
-#abc {
-  color: red;
-  font-size: 20px;
-}
 </style>
