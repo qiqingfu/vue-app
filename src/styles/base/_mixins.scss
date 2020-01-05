@@ -3,3 +3,13 @@
 
 /* 全局混入样式, 无须单独引入
 ------------------------- */
+
+@mixin clearfix() {
+	&::after {
+		content: "";
+		display: block;
+		height: 0;
+		clear:both;
+		visibility: hidden;
+	}
+}

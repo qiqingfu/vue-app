@@ -1,9 +1,49 @@
 @charset "UTF-8";
 
-.pl20 {
-  padding-left: 20px;
+/* 常用间距
+----------------- */
+@each $key in 0, 4, 6, 8, 10, 12, 14, 16, 20, 26, 30, 36, 40, 46, 50, 56, 60 {
+	.mt#{$key} {
+		margin-top: #{$key}px;
+	}
+
+	.mr#{$key} {
+		margin-right: #{$key}px;
+	}
+
+	.mb#{$key} {
+		margin-bottom: #{$key}px;
+	}
+
+	.ml#{$key} {
+		margin-left: #{$key}px;
+	}
+
+	.pt#{$key} {
+		padding-top: #{$key}px;
+	}
+
+	.pr#{$key} {
+		padding-right: #{$key}px;
+	}
+
+	.pb#{$key} {
+		padding-bottom: #{$key}px;
+	}
+
+	.pl#{$key} {
+		padding-left: #{$key}px;
+	}
 }
 
-.center {
-  text-align: center;
+/* 常用块级, 行内元素
+----------------- */
+.block {
+	display: block;
+}
+.inline-block {
+	display: inline-block;
+}
+.inline {
+	display: inline;
 }

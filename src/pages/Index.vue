@@ -1,6 +1,8 @@
 <template>
 <div>
-  <ui-menu :menu="menuList" :current-menu="currentMenu" @emit="change"></ui-menu>
+  <div class="container menu">
+    <ui-menu :menu="menuList" :current-menu="currentMenu" @emit="change"></ui-menu>
+  </div>
   <div class="wrapper">
     <router-view></router-view>
   </div>
@@ -18,7 +20,14 @@ export default {
           route: '/',
         },
         project: {
-          name: '项目列表',
+          name: '项目',
+          children: {
+            projectList: '项目列表',
+            projectAdd: '新增项目',
+          },
+          groups: {
+            项目管理: ['projectList', 'projectAdd'],
+          },
           route: '/project',
         },
       },
@@ -27,14 +36,20 @@ export default {
   },
   methods: {
     change(e) {
+      if (e.key === this.$route.name) {
+        return;
+      }
       this.$router.push({ name: e.key });
     },
-    correct() {
-      this.currentMenu = this.$route.name;
-    },
   },
-  mounted() {
-    this.correct();
+
+  watch: {
+    $route: {
+      handler() {
+        this.currentMenu = this.$route.path.replace(/([^\\+])/, '') || this.$route.name;
+      },
+      immediate: true,
+    },
   },
 };
 </script>

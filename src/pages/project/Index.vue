@@ -1,32 +1,15 @@
 <template>
   <div>
-    <div class="load-wrapper" v-if="!loading">
-      <ui-load :done-time="loading"></ui-load>
-    </div>
-    <table class="table left" v-else>
-      <thead>
-      <tr>
-        <th>Project Name</th>
-        <th>Assulgned To</th>
-        <th>Priority</th>
-        <th>Completed</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for="project in projects" :key="project.id">
-        <td>{{ project.projectName }}</td>
-        <td>{{ project.Assigned }}</td>
-        <td>{{ project.Proority }}</td>
-        <td>{{ project.Completed }}</td>
-      </tr>
-      </tbody>
-    </table>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
-import { GET_PROJECTS } from '@/utils/constance';
+import {
+  GET_PROJECTS,
+  SET_COMPLETE,
+} from '@/utils/constance';
 
 export default {
   name: 'IndexVuex',
@@ -44,6 +27,14 @@ export default {
         .catch(() => {
           this.loading = true;
         });
+    },
+    completion(state) {
+      return {
+        through: !!state,
+      };
+    },
+    finish(item) {
+      this.$store.dispatch(SET_COMPLETE, { id: item.id });
     },
   },
   computed: {

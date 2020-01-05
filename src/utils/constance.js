@@ -12,6 +12,9 @@
  */
 export const GET_PROJECTS = 'GET_PROJECTS';
 export const SAVE_PROJECTS = 'SAVE_PROJECTS';
+export const SET_COMPLETE = 'SET_COMPLETE';
+export const UPDATE_PROJECTS = 'UPDATE_PROJECTS';
+export const CREATE_PROJECT = 'CREATE_PROJECT';
 
 /**
  * localstorage sessionstorage

@@ -1,0 +1,32 @@
+/**
+* @author qiqingfu
+* @date 2020-01-05 13:52
+*/
+@import "../base/mixins";
+
+.tab {
+	width: 100%;
+	display: block;
+	padding: 12px 20px;
+	box-sizing: border-box;
+	position: relative;
+	@include clearfix();
+
+	& > .push-right {
+		float: right;
+	}
+
+	& > .push-left {
+		float: left;
+	}
+}
+
+// container
+.container {
+	position: relative;
+
+	&.menu {
+		padding: 12px 4px;
+		background-color: #fff;
+	}
+}
