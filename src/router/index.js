@@ -4,7 +4,25 @@
  */
 
 import Router from 'vue-router';
-import routes from '@/config/routes';
+import rules from '@/config/routes';
+import { locales } from '@/config/site';
+import hooks from './localeHook';
+
+const routes = [];
+
+/**
+ * 注册多语言路由
+ */
+locales.forEach((locale) => {
+  rules.forEach((rule) => {
+    routes.push({
+      ...rule,
+      path: `/${locale}/${rule.path.replace(/\/+/, '')}`,
+    });
+  });
+});
+
+console.log('routes', routes);
 
 const router = new Router({
   mode: 'history',
@@ -20,6 +38,26 @@ const router = new Router({
     return savedPosition || { x: 0, y: 0 };
   },
 });
+
+/**
+ * 挂载钩子函数
+ *
+ * @param context {Array|Object}
+ */
+const installEach = (context) => {
+  if (Array.isArray(context)) {
+    context.forEach(hook => router.beforeEach(hook));
+  } else {
+    if (Array.isArray(context.beforeEach)) {
+      context.beforeEach.forEach(hook => router.beforeEach(hook));
+    }
+
+    if (Array.isArray(context.afterEach)) {
+      context.afterEach.forEach(hook => router.afterEach(hook));
+    }
+  }
+};
+installEach(hooks);
 
 // 注册路由
 const install = Vue => Vue.use(Router);

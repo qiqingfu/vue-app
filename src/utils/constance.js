@@ -9,6 +9,7 @@
 
 /**
  *  Vuex
+ *  @type {string}
  */
 export const GET_PROJECTS = 'GET_PROJECTS';
 export const SAVE_PROJECTS = 'SAVE_PROJECTS';
@@ -16,8 +17,17 @@ export const SET_COMPLETE = 'SET_COMPLETE';
 export const UPDATE_PROJECTS = 'UPDATE_PROJECTS';
 export const CREATE_PROJECT = 'CREATE_PROJECT';
 
+
 /**
- * localstorage sessionstorage
+ * localstorage 存储的key
  */
 // 存储项目列表到本地 locastorage的key
 export const PROJECT_KEY = 'PROJECT_KEY_123';
+
+
+/**
+ * cookie 存储的 key
+ *
+ * @type {string}
+ */
+export const COOKIE_LANG_KEY = 'lang';
