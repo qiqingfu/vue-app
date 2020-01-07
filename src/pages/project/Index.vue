@@ -44,6 +44,7 @@ export default {
   },
   mounted() {
     this.getProjects();
+    console.log(this);
   },
 };
 </script>

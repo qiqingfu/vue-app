@@ -5,7 +5,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "page-index" */'@/pages/Index.vue'),
     children: [
       {
-        path: '/project',
+        path: 'project',
         name: 'project',
         component: () => import(/* webpackChunkName: "project" */'@/pages/project/Index.vue'),
         redirect: '/project/projectList',

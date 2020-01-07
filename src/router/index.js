@@ -22,7 +22,7 @@ locales.forEach((locale) => {
   });
 });
 
-console.log('routes', routes);
+console.log(routes);
 
 const router = new Router({
   mode: 'history',

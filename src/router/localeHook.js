@@ -65,7 +65,7 @@ export default [
       }
 
       return next({
-        path: `/${lang}/${path.replace(/\/+/g, '')}`,
+        path: `/${lang}/${path.replace(/\/+/, '')}`,
         query,
         hash,
       });
