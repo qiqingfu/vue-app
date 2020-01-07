@@ -6,10 +6,8 @@
 /**
  * 英文包
  */
+const project = require('./project');
 
-export default {
-  common: {
-    title: 'title',
-    projectName: 'projectName',
-  },
-};
+module.exports = Object.assign({
+  project,
+});

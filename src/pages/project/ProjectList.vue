@@ -5,7 +5,8 @@
     </div>
     <div v-else>
       <div class="tab">
-        <ui-btn class="push-right" size="m" @emit="created">新增项目</ui-btn>
+        <ui-btn class="push-right" size="m"
+                @emit="created">{{ $t('project.addProject') }}</ui-btn>
       </div>
       <table class="table left">
         <thead>
@@ -25,8 +26,12 @@
             <ui-btn
               color="minor"
               size="s"
-              v-if="!!project.Completed" @emit="finish(project)">取消</ui-btn>
-            <ui-btn size="s" color="neutral-1" @emit="finish(project)" v-else>完成</ui-btn>
+              v-if="!!project.Completed" @emit="finish(project)">{{ $t('project.cancel') }}</ui-btn>
+            <ui-btn
+              size="s"
+              color="neutral-1"
+              @emit="finish(project)"
+              v-else>{{ $t('project.finish') }}</ui-btn>
           </td>
         </tr>
         </tbody>

@@ -7,9 +7,9 @@
  * 中文包
  */
 
-export default {
-  common: {
-    title: '标题',
-    projectName: '项目名',
-  },
-};
+const project = require('./project');
+
+
+module.exports = Object.assign({
+  project,
+});
