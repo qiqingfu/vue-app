@@ -6,7 +6,8 @@
 import Router from 'vue-router';
 import rules from '@/config/routes';
 import { locales } from '@/config/site';
-import hooks from './localeHook';
+import localeHooks from './localeHook';
+import preloadHook from './preloadHook';
 
 const routes = [];
 
@@ -56,7 +57,8 @@ const installEach = (context) => {
     }
   }
 };
-installEach(hooks);
+installEach(localeHooks);
+installEach(preloadHook);
 
 // 注册路由
 const install = Vue => Vue.use(Router);

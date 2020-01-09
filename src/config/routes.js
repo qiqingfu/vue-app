@@ -2,13 +2,25 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    meta: {
-      title: 'home.title',
-      keywords: 'home.keywords',
-      description: 'home.description',
-    },
+    redirect: '/dashboard',
     component: () => import(/* webpackChunkName: "page-index" */'@/pages/Index.vue'),
     children: [
+      {
+        path: 'dashboard',
+        name: 'dashboard',
+        meta: {
+          title: 'dashboard.title',
+          keywords: 'dashboard.keywords',
+          description: 'dashboard.description',
+          preload: 'userinfo', // 预加载用户数据, 存储在 Vuex 中
+        },
+        component: () => import(/* webpackChunkName: "page-dashboard-index" */'@/pages/dashboard/Index.vue'),
+      },
+      {
+        path: 'http',
+        name: 'http',
+        component: () => import(/* webpackChunkName: "http" */'@/pages/http/Index.vue'),
+      },
       {
         path: 'project',
         name: 'project',
@@ -38,6 +50,9 @@ const routes = [
         ],
       },
     ],
+  },
+  {
+    path: '/project',
   },
   {
     path: '*',
