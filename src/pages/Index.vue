@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container menu">
-      <ui-menu :menu="menuList" :current-menu="currentMenu" @emit="change"></ui-menu>
+      <ui-menu :menu="menuList" @emit="change"></ui-menu>
       <div class="lang">
       <span :class="[
           'ml4',
@@ -27,23 +27,18 @@ export default {
   data() {
     return {
       menuList: {
-        home: {
-          name: '首页',
-          route: '/',
-        },
+        '/': '首页',
         project: {
           name: '项目',
           children: {
-            projectList: '项目列表',
-            projectAdd: '新增项目',
+            '/project/list': '项目列表',
+            '/project/add': '新增项目',
           },
           groups: {
-            项目管理: ['projectList', 'projectAdd'],
+            项目管理: ['/project/list', '/project/add'],
           },
-          route: '/project.js.js',
         },
       },
-      currentMenu: 'home',
       lang: '',
       languages: [
         { label: 'EngLish', key: 'en-us' },
@@ -56,7 +51,7 @@ export default {
       if (e.key === this.$route.name) {
         return;
       }
-      this.$router.push({ name: e.key });
+      this.$router.push({ path: e.key });
     },
     changeLang(langInfo) {
       this.$i18n.setLocale({
@@ -68,14 +63,6 @@ export default {
   },
   mounted() {
     this.lang = getCookieLanguage();
-  },
-  watch: {
-    $route: {
-      handler() {
-        this.currentMenu = this.$route.path.replace(/([^\\+])/, '') || this.$route.name;
-      },
-      immediate: true,
-    },
   },
 };
 </script>

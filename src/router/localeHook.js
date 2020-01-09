@@ -27,9 +27,6 @@ export default [
   ({ path, query, hash }, from, next) => {
     const lang = path.split('/')[1];
 
-    console.log('to path', path);
-    console.log('from', from);
-
     /**
      * @example
      * 当前支持的路由 /zh-cn/setting/user

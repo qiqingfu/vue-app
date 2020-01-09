@@ -7,7 +7,9 @@
  * 英文包
  */
 const project = require('./project');
+const common = require('./common');
 
 module.exports = Object.assign({
   project,
+  common,
 });

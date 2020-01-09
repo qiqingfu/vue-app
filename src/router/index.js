@@ -22,8 +22,6 @@ locales.forEach((locale) => {
   });
 });
 
-console.log(routes);
-
 const router = new Router({
   mode: 'history',
   routes,
@@ -38,6 +36,7 @@ const router = new Router({
     return savedPosition || { x: 0, y: 0 };
   },
 });
+
 
 /**
  * 挂载钩子函数
