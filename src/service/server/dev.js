@@ -9,8 +9,8 @@
  * @type {{httpbin: {api: string}}}
  */
 module.exports = {
-  httpbin: {
+  bin: {
     ip: '34.193.212.251:443',
-    url: 'https://httpbin.org',
+    url: 'https://httpbin.org/',
   },
 };

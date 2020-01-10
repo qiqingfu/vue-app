@@ -16,6 +16,8 @@ import {
 
 const { isIp, isDomain } = regexp.verifyReg;
 
+console.log('api', api);
+
 // axios 实例
 const Http = axios.create(options);
 
@@ -43,7 +45,7 @@ const updateServer = (url) => {
   }
   const port = url.split(':')[1] || 80;
   return port === '443'
-    ? `https://${url}`
+    ? `https://${url}/`
     : `http://${url}`;
 };
 
@@ -69,7 +71,7 @@ const match = (url) => {
     if (url.indexOf(key) === 0) {
       result = typeof api[key] === 'string'
         ? { url: updateServer(api[key]), key }
-        : Object.assign(api[key], { key }, { url: updateServer(api[key].url) });
+        : Object.assign({}, api[key], { key }, { url: updateServer(api[key].url) });
 
       return true;
     }

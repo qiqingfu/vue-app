@@ -38,6 +38,7 @@ export default {
             项目管理: ['/project/list', '/project/add'],
           },
         },
+        '/http': 'http请求',
       },
       lang: '',
       languages: [

@@ -3,6 +3,7 @@
  * @date 2020-01-09 17:47
  */
 import service from '@/service/';
+import createConf from './core/create';
 
 const mode = process.env.NODE_ENV;
 const key = 'ip';
@@ -25,45 +26,14 @@ if (!server) {
  *
  * @type {Object}
  */
-export const config = {
-  '@httpbin': server.httpbin[key],
-
-  '@httpbin-headers': {
-    url: server.httpbin[key],
-
-    // 自定义统一的 headers
-    headers(headers) {
-      return {
-        customizing: 'qqf-header',
-        ...headers,
-      };
+export const config = createConf(key, {
+  bin: {
+    headers: {
+      http_server: 'bin',
+      author: 'qiqingfu',
     },
   },
-
-  '@httpbin-params': {
-    url: server.httpbin[key],
-
-    // 自定义统一参数
-    params(params) {
-      return {
-        customizing: 'qqf-params',
-        ...params,
-      };
-    },
-  },
-
-  '@httpbin-response': {
-    url: server.httpbin[key],
-
-    // 自定义统一返回值
-    response(res) {
-      return {
-        customizing: 'qqf-response',
-        ...res,
-      };
-    },
-  },
-};
+});
 
 /**
  * axios 实例化参数
