@@ -10,6 +10,7 @@
  */
 module.exports = {
   httpbin: {
-    api: '34.193.212.251:443',
+    ip: '34.193.212.251:443',
+    url: 'https://httpbin.org',
   },
 };

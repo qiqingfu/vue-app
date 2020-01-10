@@ -5,6 +5,7 @@
 
 import axios from 'axios';
 import { transformLang } from '@/utils/tools';
+import regexp from '@/utils/regexp';
 import { i18n } from '@/locales';
 import {
   config as api,
@@ -13,8 +14,38 @@ import {
   transformResponse,
 } from './api';
 
+const { isIp, isDomain } = regexp.verifyReg;
+
 // axios 实例
 const Http = axios.create(options);
+
+/**
+ * 更新服务器ip地址
+ *
+ * @param {string} url
+ * @return {string}
+ *
+ * @example
+ * url: https://baidu.com
+ * res: https://baidu.com
+ *
+ * @example
+ * url: 34.193.212.251:443
+ * res: https://34.193.212.251:443
+ *
+ * @example
+ * url: 34.193.212.251:80
+ * res: http://34.193.212.251:80
+ */
+const updateServer = (url) => {
+  if (isDomain(url) && !isIp(url)) {
+    return url;
+  }
+  const port = url.split(':')[1] || 80;
+  return port === '443'
+    ? `https://${url}`
+    : `http://${url}`;
+};
 
 /**
  * 匹配接口配置, 返回预期对象
@@ -37,12 +68,11 @@ const match = (url) => {
   Object.keys(api).some((key) => {
     if (url.indexOf(key) === 0) {
       result = typeof api[key] === 'string'
-        ? { url: api[key], key }
-        : { ...api[key], key };
+        ? { url: updateServer(api[key]), key }
+        : Object.assign(api[key], { key }, { url: updateServer(api[key].url) });
 
       return true;
     }
-
     return false;
   });
 

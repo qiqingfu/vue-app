@@ -5,6 +5,7 @@
 import service from '@/service/';
 
 const mode = process.env.NODE_ENV;
+const key = 'ip';
 
 /**
  * 获取 service 下不同环境的服务器地址
@@ -25,10 +26,10 @@ if (!server) {
  * @type {Object}
  */
 export const config = {
-  '@httpbin': server.httpbin.api,
+  '@httpbin': server.httpbin[key],
 
   '@httpbin-headers': {
-    url: server.httpbin.api,
+    url: server.httpbin[key],
 
     // 自定义统一的 headers
     headers(headers) {
@@ -40,7 +41,7 @@ export const config = {
   },
 
   '@httpbin-params': {
-    url: server.httpbin.api,
+    url: server.httpbin[key],
 
     // 自定义统一参数
     params(params) {
@@ -52,7 +53,7 @@ export const config = {
   },
 
   '@httpbin-response': {
-    url: server.httpbin.api,
+    url: server.httpbin[key],
 
     // 自定义统一返回值
     response(res) {
@@ -70,7 +71,7 @@ export const config = {
  * @type {Object}
  */
 export const options = {
-  timeout: 3000,
+  timeout: 10000,
   headers: {
     post: {
       'Content-Type': 'application/json;charset=UTF-8',
@@ -96,7 +97,6 @@ export const error = err => ({
 /**
  *
  * @param {Object} res
- * @param {Object} 返回响应数据结果对象
  */
 export const transformResponse = (res) => {
   const data = res.request && res.config ? res.data : res;
