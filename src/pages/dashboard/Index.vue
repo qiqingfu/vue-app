@@ -27,6 +27,7 @@ export default {
   methods: {
     init(data) {
       this.info = data;
+      console.log(this);
     },
   },
   watch: {

@@ -90,7 +90,7 @@ Http.interceptors.request.use((config) => {
   // 处理链接替换, 保留一个链接原名
   if (matched) {
     config.urlalias = config.url;
-    config.url = config.url.replace(matched.keepAlive, matched.url);
+    config.url = config.url.replace(matched.key, matched.url);
 
     // 处理headers
     config.headers = mergeObject(matched.headers, config.headers, config);
@@ -101,3 +101,48 @@ Http.interceptors.request.use((config) => {
 
   return config;
 });
+
+/**
+ * 响应拦截器
+ * 触发自定义的 response 钩子函数
+ */
+Http.interceptors.response.use((res) => {
+  const data = transformResponse(res);
+
+  // 解析url链接别名
+  const matched = res && res.config && res.config.urlalias ? match(res.config.urlalias) : null;
+  if (matched && typeof matched.response === 'function') {
+    return matched.response(data, res);
+  }
+
+  return data;
+}, err => error(err));
+
+/**
+ * 将 http 请求方法挂载到原型对象, 所有组件通过 this.$http
+ *
+ * @param Vue {Object} - Vue构造器
+ */
+const install = (Vue) => {
+  Vue.prototype.$http = Http;
+};
+
+/**
+ * get 请求方法
+ * @param args
+ * @return {Promise}
+ */
+const get = (...args) => Http.get(...args);
+
+/**
+ * post 请求方法
+ * @param args
+ */
+const post = (...args) => Http.post(...args);
+
+export {
+  Http,
+  install,
+  get,
+  post,
+};

@@ -19,7 +19,7 @@ const routes = [
       {
         path: 'http',
         name: 'http',
-        component: () => import(/* webpackChunkName: "http" */'@/pages/http/Index.vue'),
+        component: () => import(/* webpackChunkName: "page-http-index" */'@/pages/http/Index.vue'),
       },
       {
         path: 'project',
